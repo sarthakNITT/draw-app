@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import ButtonComponent from '@repo/ui/button';
 
 interface SignInProps {
   onSwitchToSignUp: () => void;
@@ -160,20 +161,7 @@ const SignIn = () => {
             </div>
 
             {/* Sign In Button */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              {isLoading ? (
-                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              ) : (
-                <>
-                  Sign In
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </>
-              )}
-            </button>
+            <ButtonComponent loading={isLoading} title='Sign In' secIcon={<ArrowRight className="ml-2 h-5 w-5" />} variant='Quinary' size='medium' />
           </form>
 
           {/* Divider */}

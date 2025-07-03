@@ -3,11 +3,6 @@
 import { useState, useEffect } from 'react';
 import { 
   PenTool, 
-  Users, 
-  Download, 
-  Zap, 
-  Palette, 
-  Share2, 
   Star, 
   ArrowRight,
   Menu,
@@ -22,6 +17,8 @@ import {
   Undo2
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import ButtonComponent from '@repo/ui/button'
+import { features } from "@repo/common-frontend/src/landingPageUtils"
 
 export default function LandingScreen() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,60 +32,6 @@ export default function LandingScreen() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const features = [
-    {
-      icon: PenTool,
-      title: "Intuitive Drawing",
-      description: "Create beautiful diagrams and sketches with our intuitive drawing tools. Perfect for brainstorming and visual thinking."
-    },
-    {
-      icon: Users,
-      title: "Real-time Collaboration",
-      description: "Work together in real-time with your team. See changes instantly and collaborate seamlessly from anywhere."
-    },
-    {
-      icon: Download,
-      title: "Export Anywhere",
-      description: "Export your creations in multiple formats - PNG, SVG, PDF, and more. Share your ideas with the world."
-    },
-    {
-      icon: Palette,
-      title: "Rich Styling",
-      description: "Customize colors, fonts, and styles to match your brand. Make your diagrams truly yours."
-    },
-    {
-      icon: Zap,
-      title: "Lightning Fast",
-      description: "Experience smooth performance with our optimized rendering engine. No lag, just pure creativity."
-    },
-    {
-      icon: Share2,
-      title: "Easy Sharing",
-      description: "Share your work with a simple link. Control permissions and collaborate with confidence."
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Product Designer",
-      content: "This tool has revolutionized how our team collaborates on design concepts. The real-time features are incredible!",
-      avatar: "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
-    },
-    {
-      name: "Michael Chen",
-      role: "Software Engineer",
-      content: "Perfect for system architecture diagrams. The export quality is professional-grade and the collaboration features are top-notch.",
-      avatar: "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "UX Researcher",
-      content: "I use this daily for user journey maps and wireframes. The interface is so intuitive that I can focus on my ideas, not the tool.",
-      avatar: "https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -114,12 +57,8 @@ export default function LandingScreen() {
               {/* <a href="#testimonials" className="text-gray-700 hover:text-purple-600 transition-colors">Testimonials</a>
               <a href="#pricing" className="text-gray-700 hover:text-purple-600 transition-colors">Pricing</a> */}
               <div className='flex flex-row gap-2 items-center'>
-                <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                  Get Started
-                </button>
-                <button onClick={()=>router.push("/signin")} className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                  Sign In
-                </button>
+                <ButtonComponent size='small' title='Get Started' variant='primary' />
+                <ButtonComponent runFunction={()=>router.push("/signin")} size='small' title='Sign In' variant='secondary' />
               </div>
 
               <button 
@@ -170,13 +109,8 @@ export default function LandingScreen() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-purple-600 text-white px-8 py-4 rounded-lg hover:bg-purple-700 transition-all transform hover:scale-105 font-medium flex items-center">
-                Start Drawing Free
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </button>
-              <button className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                Watch Demo
-              </button>
+              <ButtonComponent title='Start Drawing Free' size='large' secIcon={<ArrowRight className="w-5 h-5 ml-2" />} variant='primary' />
+              <ButtonComponent title='Watch Demo' size='large' variant='secondary' />
             </div>
             
             <div className="mt-12 flex items-center justify-center gap-8 text-gray-500">
@@ -249,9 +183,7 @@ export default function LandingScreen() {
               <p className="text-gray-600 mb-6">
                 Experience the power of our drawing tools with this interactive demo
               </p>
-              <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
-                Launch Demo
-              </button>
+              <ButtonComponent title='Launch Demo' variant='primary' size='medium' />
             </div>
           </div>
         </div>
@@ -267,12 +199,8 @@ export default function LandingScreen() {
             Join thousands of creators who are already using DrawFlow to bring their ideas to life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-purple-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-medium">
-              Start Free Trial
-            </button>
-            <button className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-colors font-medium">
-              Contact Sales
-            </button>
+            <ButtonComponent title='Start Free Trial' size='large' variant='tertiary' />
+            <ButtonComponent title='Contact Sales' size='large' variant='Quaternary' />
           </div>
         </div>
       </section>

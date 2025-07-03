@@ -82,6 +82,9 @@ importers:
         specifier: ^4.1.11
         version: 4.1.11
     devDependencies:
+      '@repo/common-frontend':
+        specifier: workspace:*
+        version: link:../../packages/common-frontend
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -137,6 +140,22 @@ importers:
       zod:
         specifier: ^3.25.67
         version: 3.25.67
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
+  packages/common-frontend:
+    dependencies:
+      lucide-react:
+        specifier: ^0.525.0
+        version: 0.525.0(react@19.1.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
