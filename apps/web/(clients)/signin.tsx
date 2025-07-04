@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
+import { Mail, Lock, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import ButtonComponent from '@repo/ui/button';
 import HeaderSection from './Auth_menu/headerSection';
@@ -10,10 +10,6 @@ import RememberForgotPassword from './Auth_menu/rememberForgotPassword';
 import DeviderLine from './Auth_menu/deviderLine';
 import SocialLogin from './Auth_menu/socialLoginSection';
 import LinkSection from './Auth_menu/LinkSection';
-
-interface SignInProps {
-  onSwitchToSignUp: () => void;
-}
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
