@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import ButtonComponent from '@repo/ui/button';
+import HeaderSection from './Auth_menu/headerSection';
 
 interface SignInProps {
   onSwitchToSignUp: () => void;
@@ -65,13 +66,7 @@ const SignIn = () => {
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full mb-4">
-            <Lock className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h1>
-          <p className="text-gray-600">Please sign in to your account</p>
-        </div>
+        <HeaderSection heading='Welcome back' subHeading='Please sign in to your account' icon={<Lock className="w-8 h-8 text-white" />}/>
 
         {/* Sign In Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">

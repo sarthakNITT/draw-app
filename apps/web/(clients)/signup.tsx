@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import HeaderSection from './Auth_menu/headerSection';
 
 interface SignUpProps {
   onSwitchToSignIn: () => void;
@@ -103,13 +104,7 @@ const SignUp = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50 flex items-center justify-center p-4">
       <div className="w-full max-w-lg">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-4">
-            <User className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
-          <p className="text-gray-600">Join us and start your journey</p>
-        </div>
+        <HeaderSection heading='Create Account' subHeading='Join us and start your journey' icon={<User className="w-8 h-8 text-white" />} />
 
         {/* Sign Up Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
