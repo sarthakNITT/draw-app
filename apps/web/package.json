@@ -11,6 +11,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "6.11.1",
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.1.11",
     "dotenv": "^17.0.1",
@@ -31,7 +32,9 @@
     "@types/react-dom": "19.1.1",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.30.0",
+    "prisma": "^6.11.1",
     "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
     "typescript": "5.8.2"
   }
 }
