@@ -5,10 +5,11 @@ import {
     Menu,
     X,
 } from 'lucide-react';
+import { SessionProvider, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function NavSection () {
+function NavSection () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const router = useRouter()
@@ -21,6 +22,8 @@ export default function NavSection () {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const session = useSession()
     return (
         <div>
             <nav id='Home' className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -44,7 +47,14 @@ export default function NavSection () {
                     <a href="#pricing" className="text-gray-700 hover:text-purple-600 transition-colors">Pricing</a> */}
                     <div className='flex flex-row gap-2 items-center'>
                         <ButtonComponent size='small' title='Get Started' variant='primary' />
-                        <ButtonComponent runFunction={()=>router.push("/signin")} size='small' title='Sign In' variant='secondary' />
+                        {session.status==="authenticated" ? 
+                        <>
+                            <div>{session.data.user?.name}</div>
+                            <button onClick={()=>signOut()}>Logout</button>
+                        </>
+                        : (
+                            <ButtonComponent runFunction={()=>router.push("/signin")} size='small' title='Sign In' variant='secondary' />
+                        )}
                     </div>
 
                     <button 
@@ -71,5 +81,13 @@ export default function NavSection () {
                 )}
             </nav>
         </div>
+    )
+}
+
+export default function App () {
+    return (
+        <SessionProvider>
+            <NavSection/>
+        </SessionProvider>
     )
 }

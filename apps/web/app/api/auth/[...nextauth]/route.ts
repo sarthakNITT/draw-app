@@ -9,7 +9,10 @@ const handler = NextAuth({
           clientId: GOOGLE_CLIENT_ID!,
           clientSecret: GOOGLE_CLIENT_SECRET!
         })
-    ]
+    ],
+    session: {
+      strategy: "jwt"
+    }
 })
 
 export { handler as GET, handler as POST }
