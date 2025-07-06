@@ -1,3 +1,4 @@
+"use client"
 import ButtonComponent from "@repo/ui/button";
 import { 
     Star, 
@@ -5,8 +6,19 @@ import {
     Heart,
     Sparkles,
 } from 'lucide-react';
+import { SessionProvider, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function HeroSection () {
+function HeroSection () {
+  const route = useRouter()
+  const session = useSession()
+  function Start () {
+    if(session.status==="authenticated"){
+      route.push("/draw")
+    }else if(session.status==="unauthenticated"){
+      route.push("/signin")
+    }
+  }
     return (
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -29,7 +41,7 @@ export default function HeroSection () {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {/* <button className='cursor-pointer bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all transform hover:scale-105 font-medium flex items-center px-8 py-4'>argaerg</button> */}
-              <ButtonComponent title='Start Drawing Free' size='large' secIcon={<ArrowRight className="w-5 h-5 ml-2" />} variant='primary' />
+              <ButtonComponent runFunction={Start} title='Start Drawing Free' size='large' secIcon={<ArrowRight className="w-5 h-5 ml-2" />} variant='primary' />
               <ButtonComponent title='Watch Demo' size='large' variant='secondary' />
             </div>
             
@@ -46,4 +58,12 @@ export default function HeroSection () {
           </div>
         </div>
     )
+}
+
+export default function Hero () {
+  return (
+    <SessionProvider>
+      <HeroSection/>
+    </SessionProvider>
+  )
 }

@@ -2,7 +2,7 @@ import CTASection from "../(clients)/landing_menu/CTASection";
 import DemoSection from "../(clients)/landing_menu/demoSection";
 import FeaturesSection from "../(clients)/landing_menu/featuresSection";
 import FooterSection from "../(clients)/landing_menu/footerSection";
-import HeroSection from "../(clients)/landing_menu/heroSection";
+import Hero from "../(clients)/landing_menu/heroSection";
 import NavSection from "../(clients)/landing_menu/navSection";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50"></div>
-        <HeroSection/>
+        <Hero/>
       </section>
 
       {/* Features Section */}
