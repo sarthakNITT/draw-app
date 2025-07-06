@@ -49,8 +49,9 @@ function NavSection () {
                         <ButtonComponent size='small' title='Get Started' variant='primary' />
                         {session.status==="authenticated" ? 
                         <>
-                            <div>{session.data.user?.name}</div>
-                            <button onClick={()=>signOut()}>Logout</button>
+                            {/* <div>{session.data.user?.name}</div> */}
+                            {/* <button onClick={()=>signOut()}>Logout</button> */}
+                            <ButtonComponent runFunction={()=>signOut()} size='small' title='Log Out' variant='secondary' />
                         </>
                         : (
                             <ButtonComponent runFunction={()=>router.push("/signin")} size='small' title='Sign In' variant='secondary' />

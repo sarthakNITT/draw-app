@@ -37,6 +37,8 @@ export const LoginController = async (req: Request, res: Response) => {
             return
         }
 
+        
+
     } catch (error) {
         console.log(`Error from LoginController: ${error}`);
         res.status(403).json({
