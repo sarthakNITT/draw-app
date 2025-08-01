@@ -14,6 +14,7 @@ export default async function AuthMiddleware (req: Request, res: Response, next:
     try {
         const getToken = req.headers["authorization"]
         const extractToken = getToken?.split(" ")[1]
+        console.log(extractToken);
         const decode = jwt.verify(extractToken!, JWT_SECRET) as JwtPayload
         if(decode){
             req.userId = decode.userId;

@@ -5,7 +5,7 @@ import {GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET} from "../../../utils/config"
 import CredentialsProvider from "next-auth/providers/credentials";
 import { SignInSchema } from "@repo/common-backend/src/validation";
 import bcrypt from 'bcrypt'
-import prisma from "../../../db/db";
+import prisma from "@repo/common-backend/src/db/db";
 import { PrismaAdapter } from "@auth/prisma-adapter"
 
 const PC = prisma

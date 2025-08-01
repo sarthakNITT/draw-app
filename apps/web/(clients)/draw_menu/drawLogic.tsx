@@ -1,3 +1,5 @@
+import GetAllShapes from "./getAllShapes"
+import PushShapeDb from "./pushShapeDb"
 import ClearCanvas from "./storeShape"
 
 export type store = {
@@ -8,9 +10,10 @@ export type store = {
     height: number
 }
 
-let existingShape: store[] = []
-
-export default function DrawLogic (canvasRef: any) {
+export default async function DrawLogic (canvasRef: any) {
+    // const response = await GetAllShapes()
+    // const existingShape: store[] = response.message
+    const existingShape: store[] = [];
     const canvas = canvasRef.current
     const ctx = canvas.getContext("2d")
     
@@ -45,13 +48,7 @@ export default function DrawLogic (canvasRef: any) {
         clicked = false;
         const width = e.clientX - startX;
         const height = e.clientY - startY;
-        existingShape.push({
-            type: "rect",
-            x: startX,
-            y: startY,
-            width: width,
-            height: height
-        })
+        PushShapeDb(startX, startY, width, height)
     })
 }
 

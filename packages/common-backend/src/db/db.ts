@@ -1,4 +1,4 @@
-import { PrismaClient } from "../generated/prisma";
+import { PrismaClient } from "../../../../apps/web/app/generated/prisma";
 
 //@ts-ignore
 const prisma = globalThis.prisma ?? new PrismaClient()

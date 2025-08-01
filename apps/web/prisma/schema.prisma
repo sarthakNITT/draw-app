@@ -23,6 +23,7 @@ model User {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
+  shapes        Shapes[]
 }
 
 model Account {
@@ -41,4 +42,15 @@ model Account {
   user               User    @relation(fields: [userId], references: [id])
 
   @@unique([provider, providerAccountId])
+}
+
+model Shapes {
+  id                Int      @id @default(autoincrement())
+  type              String
+  x                 Int
+  y                 Int
+  width             Int
+  height            Int
+  userId            Int
+  user              User    @relation(fields: [userId], references: [id])
 }

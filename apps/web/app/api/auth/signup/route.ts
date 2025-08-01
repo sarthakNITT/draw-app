@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import {SignUpSchema} from "@repo/common-backend/src/validation"
-import prisma from '../../../db/db'
+import prisma from '@repo/common-backend/src/db/db'
 import bcrypt from 'bcrypt'
 
 const PC = prisma()
 
-export default async function POST (req: NextRequest) {
+export async function POST (req: NextRequest) {
     try {
         const data = await req.json()
         const check = SignUpSchema.safeParse(data)
